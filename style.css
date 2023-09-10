@@ -1,0 +1,230 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  font-size: 62.5%;
+
+  --color-brand: hsl(195, 91%, 25%);
+  --color-brand-hover: hsl(195, 94%, 19%);
+  --color-brand-white: hsl(0, 0%, 100%);
+  --color-brand-gray-700: hsl(240, 6%, 13%);
+  --color-brand-gray-400: hsl(240, 5%, 7%);
+}
+
+html,
+body,
+input{
+  font-family: 'Mulish', sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h3{
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--color-brand-gray-700);
+}
+
+input{
+  font-weight: 600;
+}
+
+#app{
+  display: grid;
+  grid-template-areas:
+  "header"
+  "main"
+  "aside"
+  "footer";
+}
+/*Header*/
+header{
+  grid-area: header;
+  background-color: var(--color-brand);
+  padding: 1.6rem 2.8rem;
+}
+
+header form{
+  flex: 1;
+}
+
+header .container{
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+}
+
+.container{
+  width: min(120rem, 100%);
+  margin: 0 auto;
+}
+
+.input-wrapper label{
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+}
+
+.input-wrapper input{
+  width: 100%;
+  border-radius: .4rem;
+  background: rgba(255, 255, 255, 0.20);
+  color: var(--color-brand-white);
+  border: none;
+  padding: 1.6rem 1.2rem 1.4rem;
+}
+
+.input-wrapper input::placeholder{
+  color: var(--color-brand-white);
+}
+
+/*Main*/
+.content{
+  width: min(120rem, 100%);
+  margin: 0 auto;
+}
+
+main{
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.cover{
+  object-fit: cover;
+  width: 100%;
+}
+
+section{
+  padding: 3rem 2.4rem 0;
+}
+
+section h1{
+  font-size: 2.4rem;
+}
+
+section p{
+  color: var(--color-brand-gray-400);
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.action{
+  padding: 1.8rem 0 3rem;
+}
+
+.action button{
+  border: none;
+  background-color: var(--color-brand);
+  padding: 1.2rem;
+  border-radius: 50%;
+}
+
+.action button:hover{
+  background-color: var(--color-brand-hover);
+ }
+
+/*Aside*/
+
+aside{
+  grid-area: aside;
+}
+
+.card{
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 3.2rem 0 0;
+}
+
+.card h3{
+  font-size: 1.8rem;
+}
+
+
+footer{
+  grid-area: footer;
+  background-color: var(--color-brand);
+  margin-top: 4rem;
+  padding: 2.4rem 0;
+  text-align: center;
+}
+
+footer span{
+  color: var(--color-brand-white);
+  font-weight: 600;
+}
+
+@media (min-width: 900px){
+  #app{
+    grid-template-areas:
+    "header header header"
+    "main main aside"
+    "footer footer footer";
+  }
+
+  .content{
+    display: flex;
+    padding-top: 4rem;
+  }
+
+  section{
+    padding: 0;
+  }
+
+  .title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .action{
+    padding-top: 3.5rem;
+  }
+
+  aside{
+    padding-left: 3.4rem;
+  }
+}
+
+/*Animações*/
+section h1,
+section h2,
+section p,
+main img{
+  --delay: .4s;
+  animation: appear .4s var(--delay) backwards;
+}
+
+.card{
+  --delay: .4s;
+  animation: appear .4s var(--delay) backwards;
+}
+
+.action button{
+  animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) 1.2s both;
+  
+}
+
+@keyframes appear{
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+@keyframes scale-up-center {
+  0% {
+            transform: scale(0);
+  }
+  100% {
+            transform: scale(1);
+  }
+}
+
